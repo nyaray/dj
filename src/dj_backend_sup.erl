@@ -1,5 +1,5 @@
 
--module(dj_sup).
+-module(dj_backend_sup).
 
 -behaviour(supervisor).
 
@@ -25,6 +25,6 @@ start_link() ->
 
 init([]) ->
     Children = [
-        ?CHILD(dj_backend_sup, supervisor)
+        ?CHILD(dj_backend_mplayer, worker)
     ],
     {ok, { {one_for_one, 5, 10}, Children} }.
